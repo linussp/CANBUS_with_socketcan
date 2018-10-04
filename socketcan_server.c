@@ -19,6 +19,24 @@
 #define AF_CAN PF_CAN
 #endif
     
+void AtteckerInsertedFunction(){
+    	printf("Congratulations!\n");
+    	printf("You have entered in the secret function!\n");
+	printf("We change the Execution Flow\n");
+	printf("The PassWord is %s\n", PassWord);
+	printf("%p\n", __builtin_return_address(0));
+	exit(0);
+}
+
+void Vulnerable(){
+    char buffer[StrLen];
+
+    printf("Enter some text:\n");
+    scanf("%s", buffer);
+    printf("You entered: %s\n", buffer);    
+}
+    
+    
 int main(){
         int s;
         unsigned int nbytes,len;
@@ -45,6 +63,7 @@ int main(){
             "--can_id = %x\n"
             "--can_dlc = %x\n"
             "--data = %s\n",frame.can_id,frame.can_dlc,frame.data);
+		printf("%p\n", __builtin_return_address(0));
     
         return 0;
 }
